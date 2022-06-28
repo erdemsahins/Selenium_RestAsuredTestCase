@@ -48,6 +48,8 @@ public class BaseTest {
 
         this.driver.get("https://www.gittigidiyor.com/");
         Thread.sleep(2000);
+        //close new popup
+        driver.findElement(By.xpath("//*[@class=\"wis_clsbtn\"]")).click();
     }
 
     @After
@@ -126,7 +128,8 @@ public class BaseTest {
     }
 
     public void randomSelectXpath(String xpath) {
-        driver.get("https://www.gittigidiyor.com/arama?k=bilgisayar&sf=2");
+//        driver.get("https://www.gittigidiyor.com/arama?k=bilgisayar&sf=2");
+        driver.navigate().refresh();
         List<WebElement> pageResult = driver.findElements(By.xpath(xpath));
         Random random = new Random();
         pageResult.get(random.nextInt(pageResult.size())).click();
@@ -155,7 +158,7 @@ public class BaseTest {
         StringBasketPrice = driver.findElement(By.xpath("//*[@class='total-price']")).getText();
         StringBasketPrice = clearData(StringBasketPrice);
         boolean check = StringBasketPrice.equals(StringPrice);
-        Assert.assertEquals(check, true);
+        Assert.assertTrue(check);
         logger.info("Ürün sayfasındaki fiyat ile sepette yer alan ürün fiyatının doğruluğu karşılaştırılır.");
 
     }

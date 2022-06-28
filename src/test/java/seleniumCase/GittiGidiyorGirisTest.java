@@ -10,7 +10,12 @@ public class GittiGidiyorGirisTest extends BaseTestKeyword {
         girisYap("mxj84663@xcoxc.com", "Test1234");
         urunAra("Bilgisayar");
         sepeteEkle();
+    }
 
+    @Test
+    public void urunAra(){
+        urunAra("Telefon");
+        sepeteEkle();
     }
 
 
